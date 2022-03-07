@@ -1,2 +1,4 @@
 # sudoku-resolver
-A sudoku solver in Python
+A sudoku resolver in Python
+
+A exercise to learn Python programming language
