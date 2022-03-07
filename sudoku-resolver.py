@@ -18,6 +18,7 @@ def regex_verify(square):
 		return False
 
 # Function to display a square
+# It take a 9 digits or white-space in parameter
 def square_display(square):
 	count = 0
 	line_count = 0
@@ -39,6 +40,25 @@ def square_display(square):
 	# Display the square
 	for x in lines:
 		print(x)
+
+# Function to verify if the square is complete
+# Return true or false
+def square_is_complete(square):
+	regex = r"^[\d]{9}$"
+
+	if re.search(regex, square):
+		return True
+
+	else:
+		return False
+
+# Function to search an empty box in the square
+# Return the index of list or none
+def empty_box_index(square):
+	regex = r"\s"
+	x = re.search(regex, square)
+	print(x.span()[0])
+	return x.span()[0]
 
 
 
@@ -83,7 +103,21 @@ if user_input == "N":
 		user_input = input("? : ")
 
 		if user_input == "R":
-			pass
+
+			square = original_square
+			possible_digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+			for x in square:
+				if x in possible_digits:
+					possible_digits.remove(str(x))
+
+			while not square_is_complete(square):
+				square = re.sub(r"\s", possible_digits[0],square, 1)
+				del possible_digits[0]
+
+			# Result display
+			square_display(square)
+
 
 		elif user_input == "E":
 			print("Bye")
