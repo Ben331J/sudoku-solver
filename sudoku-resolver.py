@@ -17,6 +17,29 @@ def regex_verify(square):
 		print("The square must have 9 digits or white-spaces")
 		return False
 
+# Function to display a square
+def square_display(square):
+	count = 0
+	line_count = 0
+	box_count = 0
+	line = ""
+	lines = []
+
+	while line_count < 3:
+		line += square[box_count]
+		count += 1
+		box_count += 1
+
+		if count == 3:
+			lines.append(line)
+			count = 0
+			line_count += 1
+			line = ""
+
+	# Display the square
+	for x in lines:
+		print(x)
+
 
 
 # Program start
@@ -24,7 +47,6 @@ print("Welcome to my sudoku resolver")
 
 
 main_input_list = ("N", "E")
-
 user_input = ""
 
 while user_input not in main_input_list:
@@ -49,32 +71,22 @@ if user_input == "N":
 	# If the user input is correct
 	# The original square is displayed
 	if square_correct == True:
-		
-		count = 0
-		line_count = 0
-		box_count = 0
-		line = ""
-		lines = []
-
-		while line_count < 3:
-			line += original_square[box_count]
-			count += 1
-			box_count += 1
-
-			if count == 3:
-				lines.append(line)
-				count = 0
-				line_count += 1
-				line = ""
-
-		# Display the square
 		print("The square is :")
-		for x in lines:
-			print(x)
+		square_display(original_square)
 
 	resolve_input_list = ("R", "E")
+	user_input = ""
 
-	input("Press R to resolve :")
+	while user_input not in resolve_input_list:
+		print("Press R to resolve")
+		print("Press E to exit")
+		user_input = input("? : ")
 
-if user_input == "E":
+		if user_input == "R":
+			pass
+
+		elif user_input == "E":
+			print("Bye")
+
+elif user_input == "E":
 	print("Bye")
