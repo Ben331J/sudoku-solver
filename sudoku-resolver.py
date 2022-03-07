@@ -52,14 +52,6 @@ def square_is_complete(square):
 	else:
 		return False
 
-# Function to search an empty box in the square
-# Return the index of list or none
-def empty_box_index(square):
-	regex = r"\s"
-	x = re.search(regex, square)
-	print(x.span()[0])
-	return x.span()[0]
-
 
 
 # Program start
