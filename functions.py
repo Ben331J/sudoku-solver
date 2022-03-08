@@ -1,5 +1,18 @@
+import random
+
+
+
+# Select a random board from a list of boards
+def rand_select(boards):
+
+	# Random number between 0 and the length of the boards list
+	r = random.randrange(0,(len(boards)))
+	return boards[r]
+
+
+
 # Display the sudoku board in the console
-def board_display(board):
+def console_display(board):
 
 	# For the top of the board
 	print(" -----------------------")

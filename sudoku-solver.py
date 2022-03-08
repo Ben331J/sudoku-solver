@@ -1,4 +1,4 @@
 from functions import *
 from boards import *
 
-board_display(boards[0])
+console_display(rand_select(boards))
