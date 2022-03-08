@@ -7,7 +7,7 @@ def board_display(board):
 	# Print each line of the board
 	for x in range(len(board)):
 
-		# Star of the line
+		# Start of the line
 		line = "| "
 
 		# Transformation of the line to be displayed with a string
