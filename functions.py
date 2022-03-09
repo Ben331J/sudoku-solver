@@ -48,7 +48,6 @@ def console_display(board):
 
 
 
-
 # Solve a board
 def solve(board):
 
