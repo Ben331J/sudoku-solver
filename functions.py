@@ -51,27 +51,40 @@ def console_display(board):
 # Solve a board
 def solve(board):
 
-	for y in range(len(board)):
+	solving_board = board
 
-		for x in range(len(board[y])):
+	for y in range(len(solving_board)):
 
-			row = board[y]
+		for x in range(len(solving_board[y])):
+
+			row = solving_board[y]
 
 			column = []
-			for i in range(len(board)):
-				column.append(board[i][x])
+			for i in range(len(solving_board)):
+				column.append(solving_board[i][x])
 
 			square = []
 
 			# If the box is empty
-			if board[y][x] == '0':
+			if solving_board[y][x] == 0:
 
 				# Priginal possible numbers
-				possible = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+				possible = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-				fo
+				for n in range(1, 10):
+					if n in row or n in column or n in square:
+						possible.remove(n)
 
 				# If there is only one possibility
 				if len(possible) == 1:
-					board[y][x] = possible[0]
-		break
+					solving_board[y][x] = possible[0]
+	
+	print(board)
+	print(solving_board)
+	if solving_board != board:
+		print("hey")
+		solve(solving_board)
+
+	else:
+		print('ho')
+		return board
