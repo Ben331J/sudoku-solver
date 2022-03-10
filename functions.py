@@ -61,10 +61,15 @@ def solve(grid):
 			row = solving_grid[y]
 
 			column = []
-			for i in range(len(solving_grid)):
-				column.append(solving_grid[i][x])
+			for c in range(len(solving_grid)):
+				column.append(solving_grid[c][x])
 
 			square = []
+			s_y0 = (y // 3) * 3
+			s_x0 = (x // 3) * 3
+			for s_y in range(3):
+				for s_x in range(3):
+					square.append(solving_grid[s_x0 + s_y][s_x0 + s_x])
 
 			# If the box is empty
 			if solving_grid[y][x] == 0:
