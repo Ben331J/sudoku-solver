@@ -1,9 +1,9 @@
 from functions import *
-from boards import *
+from grids import *
 
-board = rand_select(boards)
+grid = rand_select(grids)
 print("Original board")
-console_display(board)
-board = solve(board)
-print("Solved board")
-console_display(board)
+console_display(grid)
+grid = solve(grid)
+print("Solved grid")
+console_display(grid)

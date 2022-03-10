@@ -1,21 +1,22 @@
 import random
+import copy
 
 
 
-# Select a random board from a list of boards
-def rand_select(boards):
+# Select a random grid from a list of grids
+def rand_select(grids):
 
-	# Random number between 0 and the length of the boards list
-	r = random.randrange(0,(len(boards)))
-	return boards[r]
+	# Random number between 0 and the length of the grids list
+	r = random.randrange(0,(len(grids)))
+	return grids[r]
 
 
 
-# Display the sudoku board in the console
-def console_display(board):
+# Display the sudoku grid in the console
+def console_display(grid):
 
-	# Print each line of the board
-	for y in range(len(board)):
+	# Print each line of the grid
+	for y in range(len(grid)):
 
 		# Before each group of three lines print a separator
 		if not (y) % 3:
@@ -25,14 +26,14 @@ def console_display(board):
 		line = ""
 
 		# Transformation of the line to be displayed with a string
-		for x in range(len(board[y])):
+		for x in range(len(grid[y])):
 
 			# Before each group of three boxes print a separator
 			if not (x) % 3:
 				line += "| "
 
 			# Add each box in the line
-			line += str(board[y][x]) + " "
+			line += str(grid[y][x]) + " "
 
 		# At the end of the line
 		line += "|"
@@ -43,30 +44,30 @@ def console_display(board):
 		# Print the line
 		print(line)
 
-	# At the end of the board
+	# At the end of the grid
 	print(" -----------------------")
 
 
 
-# Solve a board
-def solve(board):
+# Solve a grid
+def solve(grid):
 
-	solving_board = board
+	solving_grid = copy.deepcopy(grid)
 
-	for y in range(len(solving_board)):
+	for y in range(len(solving_grid)):
 
-		for x in range(len(solving_board[y])):
+		for x in range(len(solving_grid[y])):
 
-			row = solving_board[y]
+			row = solving_grid[y]
 
 			column = []
-			for i in range(len(solving_board)):
-				column.append(solving_board[i][x])
+			for i in range(len(solving_grid)):
+				column.append(solving_grid[i][x])
 
 			square = []
 
 			# If the box is empty
-			if solving_board[y][x] == 0:
+			if solving_grid[y][x] == 0:
 
 				# Priginal possible numbers
 				possible = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -77,14 +78,9 @@ def solve(board):
 
 				# If there is only one possibility
 				if len(possible) == 1:
-					solving_board[y][x] = possible[0]
+					solving_grid[y][x] = possible[0]
 	
-	print(board)
-	print(solving_board)
-	if solving_board != board:
-		print("hey")
-		solve(solving_board)
-
-	else:
-		print('ho')
-		return board
+	if solving_grid != grid:
+		solve(solving_grid)
+	
+	return solving_grid
