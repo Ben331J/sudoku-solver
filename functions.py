@@ -84,8 +84,6 @@ def solve(grid):
 				# If there is only one possibility
 				if len(possible) == 1:
 					solving_grid[y][x] = possible[0]
-					print(x, y)
-					print(possible[0])
 	
 	if solving_grid != grid:
 		solve(solving_grid)
