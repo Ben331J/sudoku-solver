@@ -69,7 +69,7 @@ def solve(grid):
 			s_x0 = (x // 3) * 3
 			for s_y in range(3):
 				for s_x in range(3):
-					square.append(solving_grid[s_x0 + s_y][s_x0 + s_x])
+					square.append(solving_grid[s_y0 + s_y][s_x0 + s_x])
 
 			# If the box is empty
 			if solving_grid[y][x] == 0:
@@ -84,6 +84,8 @@ def solve(grid):
 				# If there is only one possibility
 				if len(possible) == 1:
 					solving_grid[y][x] = possible[0]
+					print(x, y)
+					print(possible[0])
 	
 	if solving_grid != grid:
 		solve(solving_grid)
