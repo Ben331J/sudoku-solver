@@ -74,7 +74,7 @@ def solve(grid):
 			# If the box is empty
 			if solving_grid[y][x] == 0:
 
-				# Priginal possible numbers
+				# Original possible numbers
 				possible = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 				for n in range(1, 10):
